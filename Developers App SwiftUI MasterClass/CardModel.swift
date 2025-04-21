@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct card: Identifiable {
+struct Card: Identifiable {
     var id = UUID()
     var title: String
     var headline: String
