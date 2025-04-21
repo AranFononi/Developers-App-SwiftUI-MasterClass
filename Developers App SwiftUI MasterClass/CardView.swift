@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct CardView: View {
-    var gradient: [Color] = [Color("Color01"), Color("Color02")]
+    var card : Card
+    
     var body: some View {
         ZStack {
-            Image("developer-no1")
+            Image(card.imageName)
             
             VStack {
-                Text("SwiftUI")
+                Text(card.title)
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
-                Text("Developer App")
+                Text(card.headline)
                     .fontWeight(.light)
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
@@ -31,7 +32,7 @@ struct CardView: View {
                 
             } label: {
                 HStack {
-                    Text("Learn".uppercased())
+                    Text(card.callToAction.uppercased())
                         .fontWeight(.heavy)
                         .foregroundColor(.white)
                         .tint(.white)
@@ -43,19 +44,19 @@ struct CardView: View {
                 } //: HSTack
                 .padding(.vertical)
                 .padding(.horizontal, 38)
-                .background(LinearGradient(colors: gradient, startPoint: .leading, endPoint: .trailing))
+                .background(LinearGradient(colors: card.gradientColors, startPoint: .leading, endPoint: .trailing))
                 .clipShape(Capsule())
                 .shadow(color: .colorShadow, radius: 6)
             }
             .offset(y: 210)
         } //: ZStack
         .frame(width: 335, height: 545)
-        .background(LinearGradient(colors: gradient, startPoint: .top, endPoint: .bottom))
+        .background(LinearGradient(colors: card.gradientColors, startPoint: .top, endPoint: .bottom))
         .clipShape(.rect(cornerRadius: 16))
         .shadow(radius: 8)
     }
 }
 
 #Preview {
-    CardView()
+    CardView(card: cardData[1])
 }
